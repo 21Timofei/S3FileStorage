@@ -61,9 +61,9 @@ func (s *Server) ListFilesHandler(w http.ResponseWriter, _ *http.Request) {
 		Files: files,
 	}
 
-	if err := s.Tmpl.Execute(w, data); err != nil {
+	if err = s.Tmpl.Execute(w, data); err != nil {
 		log.Printf("Ошибка при рендеринге шаблона: %v", err)
-		http.Error(w, "Ошибка при рендеринге шаблона", http.StatusInternalServerError)
+		http.Error(w, "Ошибка при рендере шаблона", http.StatusInternalServerError)
 	}
 }
 
@@ -79,7 +79,7 @@ func (s *Server) UploadFileHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer func(file multipart.File) {
-		err := file.Close()
+		err = file.Close()
 		if err != nil {
 
 		}
@@ -122,7 +122,7 @@ func (s *Server) DownloadFileHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer func(Body io.ReadCloser) {
-		err := Body.Close()
+		err = Body.Close()
 		if err != nil {
 
 		}
@@ -131,7 +131,7 @@ func (s *Server) DownloadFileHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=\"%s\"", fileName))
 	w.Header().Set("Content-Type", *resp.ContentType)
 
-	if _, err := io.Copy(w, resp.Body); err != nil {
+	if _, err = io.Copy(w, resp.Body); err != nil {
 		http.Error(w, "Ошибка при скачивании файла", http.StatusInternalServerError)
 	}
 }
