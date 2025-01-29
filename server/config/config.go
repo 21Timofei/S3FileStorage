@@ -12,11 +12,11 @@ import (
 )
 
 type Config struct {
-	AccessKey string `yaml:"access_key"`
-	SecretKey string `yaml:"secret_key"`
-	Bucket    string `yaml:"bucket"`
-	Region    string `yaml:"region"`
-	Endpoint  string `yaml:"endpoint"`
+	AccessKey string
+	SecretKey string
+	Bucket    string
+	Region    string
+	Endpoint  string
 	S3Client  *s3.S3
 }
 
@@ -30,8 +30,8 @@ func LoadConfig() *Config {
 		AccessKey: os.Getenv("YANDEX_ACCESS_KEY"),
 		SecretKey: os.Getenv("YANDEX_SECRET_KEY"),
 		Bucket:    os.Getenv("YANDEX_BUCKET"),
-		Region:    os.Getenv("region"),
-		Endpoint:  os.Getenv("endpoint"),
+		Region:    os.Getenv("REGION"),
+		Endpoint:  os.Getenv("ENDPOINT"),
 	}
 	if config.AccessKey == "" || config.SecretKey == "" || config.Bucket == "" {
 		log.Fatal("Переменные окружения YANDEX_ACCESS_KEY, YANDEX_SECRET_KEY и YANDEX_BUCKET обязательны")
