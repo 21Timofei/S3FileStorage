@@ -3,19 +3,19 @@ package main
 import (
 	"S3FileStorage/server"
 	"S3FileStorage/server/config"
-	"html/template"
-	"log"
+	"github.com/21Timofei/UI-Web-Interface"
 )
 
 func main() {
 	cfg := config.LoadConfig()
 
-	tmpl, err := template.ParseFiles("templates/template.html")
+	logger, _ := config.ZapConfig().Build()
+
+	tmpl, err := templates.LoadTemplates()
 	if err != nil {
-		log.Fatalf("Ошибка при загрузке шаблона: %v", err)
+		logger.Fatal(err.Error())
 	}
 
-	logger, _ := config.ZapConfig().Build()
 	srv := server.NewServer(cfg, tmpl, logger)
 	srv.InitializeRoutes()
 	srv.Start("8080")
