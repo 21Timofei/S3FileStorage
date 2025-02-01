@@ -84,10 +84,10 @@ curl -X DELETE http://localhost:8080/delete -H "Content-Type: application/json" 
 ```
 S3Storage/
 │── server/
-│   ├── config/            # Конфигурация сервера
-│   ├── handlers/          # HTTP-обработчики
-│   ├── templates/         # HTML-шаблоны
-│── static/                # Статические файлы (CSS, JS)
+│   ├── config/            
+│       ├── conig.go       # Конфигурация сервера
+│       ├── zapConig.go    # Конфигурация логгера
+│   ├── server.go          #Хендлеры для обработки событий
 │── main.go                # Точка входа
 │── Dockerfile             # Конфигурация для Docker
 │── go.mod                 # Модуль Go
