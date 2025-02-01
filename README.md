@@ -105,7 +105,8 @@ S3Storage/
 
 ## **🤝 Контакты**
 📧 Email: [timverhos@gmail.com](mailto:timverhos@gmail.com)  
-🐙 GitHub: [21Timofei](https://github.com/21Timofei)  
+🟦 Linkedin: [Timofei Verkhososov](https://www.linkedin.com/feed/)
+
 
 **✨ Если проект вам понравился — ставьте ⭐ на GitHub!** 🚀
 
