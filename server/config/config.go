@@ -1,7 +1,7 @@
 package config
 
 import (
-	"log"
+	"go.uber.org/zap"
 	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -21,9 +21,11 @@ type Config struct {
 }
 
 func LoadConfig() *Config {
+	logger := zap.Logger{}
+
 	err := godotenv.Load()
 	if err != nil {
-		log.Println("Не удалось загрузить .env файл")
+		logger.Info("Не удалось загрузить .env файл")
 	}
 
 	config := &Config{
@@ -34,7 +36,7 @@ func LoadConfig() *Config {
 		Endpoint:  os.Getenv("ENDPOINT"),
 	}
 	if config.AccessKey == "" || config.SecretKey == "" || config.Bucket == "" {
-		log.Fatal("Переменные окружения YANDEX_ACCESS_KEY, YANDEX_SECRET_KEY и YANDEX_BUCKET обязательны")
+		logger.Fatal("Переменные окружения YANDEX_ACCESS_KEY, YANDEX_SECRET_KEY и YANDEX_BUCKET обязательны")
 	}
 
 	var sess *session.Session
@@ -49,7 +51,7 @@ func LoadConfig() *Config {
 		S3ForcePathStyle: aws.Bool(true),
 	})
 	if err != nil {
-		log.Fatalf("Ошибка при создании сессии AWS: %v", err)
+		logger.Fatal(err.Error())
 	}
 
 	config.S3Client = s3.New(sess)

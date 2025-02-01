@@ -1,7 +1,7 @@
-github.com/21Timofei/UI-Web-Interface v0.0.0-20250131151623-8291194d8fb8 h1:wY5mxVkBc9WIDYev1JM63Ce4q2Ty0eWp9h8wGtgdlk8=
-github.com/21Timofei/UI-Web-Interface v0.0.0-20250131151623-8291194d8fb8/go.mod h1:tuhCWYrwCkk/9pJjjb7QoCXJIfN9fKAlSfYNCYaYBZQ=
-github.com/21Timofei/UI-Web-Interface v0.0.0-20250131152758-dc1908a77dc4 h1:5c6uAc6MBFbn3wYhcfu53F+x8z84PXOlDiydqQWKLNI=
-github.com/21Timofei/UI-Web-Interface v0.0.0-20250131152758-dc1908a77dc4/go.mod h1:tuhCWYrwCkk/9pJjjb7QoCXJIfN9fKAlSfYNCYaYBZQ=
+github.com/21Timofei/UI-Web-Interface v0.0.0-20250201105220-5497c2ff9e1f h1:wBA9TydOZsgQITRWlYPUBYAk5jnOPRaO9SGrP4Cpnfs=
+github.com/21Timofei/UI-Web-Interface v0.0.0-20250201105220-5497c2ff9e1f/go.mod h1:tuhCWYrwCkk/9pJjjb7QoCXJIfN9fKAlSfYNCYaYBZQ=
+github.com/21Timofei/UI-Web-Interface v0.0.0-20250201110327-7fc4f9f35970 h1:CmnDbX+jZc51zeSXsjfNSsl17aXa5xjzYJzof4oWHHA=
+github.com/21Timofei/UI-Web-Interface v0.0.0-20250201110327-7fc4f9f35970/go.mod h1:tuhCWYrwCkk/9pJjjb7QoCXJIfN9fKAlSfYNCYaYBZQ=
 github.com/aws/aws-sdk-go v1.55.6 h1:cSg4pvZ3m8dgYcgqB97MrcdjUmZ1BeMYKUxMMB89IPk=
 github.com/aws/aws-sdk-go v1.55.6/go.mod h1:eRwEWoyTWFMVYVQzKMNHWP5/RV4xIUGMQfXQHfHkpNU=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

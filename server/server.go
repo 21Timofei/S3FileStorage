@@ -30,11 +30,11 @@ func NewServer(cfg *config.Config, tmpl *template.Template, logger *zap.Logger) 
 }
 
 func (s *Server) InitializeRoutes() {
-	s.Mux.HandleFunc("/", s.ListFilesHandler)
-	s.Mux.HandleFunc("/upload", s.UploadFileHandler)
-	s.Mux.HandleFunc("/download", s.DownloadFileHandler)
-
-	s.Mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	s.Mux.HandleFunc("/", s.ListFilesHandler)                                                   // Главная страница - список файлов
+	s.Mux.HandleFunc("/upload", s.UploadFileHandler)                                            // Загрузка файла
+	s.Mux.HandleFunc("/download", s.DownloadFileHandler)                                        // Скачивание файла
+	s.Mux.HandleFunc("/delete", s.DeleteFilesHandler)                                           // Удаление файлов
+	s.Mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static")))) // Статика
 }
 
 func (s *Server) Start(port string) {
@@ -121,29 +121,31 @@ func (s *Server) DownloadFileHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	s.Logger.Infof("Запрос на скачивание файла: %s", fileName)
+
 	resp, err := s.Config.S3Client.GetObject(&s3.GetObjectInput{
 		Bucket: aws.String(s.Config.Bucket),
 		Key:    aws.String(fileName),
 	})
 	if err != nil {
+		s.Logger.Errorf("Ошибка при скачивании %s: %v", fileName, err)
 		http.Error(w, "Файл не найден", http.StatusNotFound)
 		return
 	}
-	defer func(Body io.ReadCloser) {
-		err = Body.Close()
-		if err != nil {
-
+	defer func() {
+		if err := resp.Body.Close(); err != nil {
+			s.Logger.Errorf("Ошибка закрытия файла %s: %v", fileName, err)
 		}
-	}(resp.Body)
+	}()
 
 	w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=\"%s\"", fileName))
 	w.Header().Set("Content-Type", *resp.ContentType)
 
 	if _, err = io.Copy(w, resp.Body); err != nil {
+		s.Logger.Errorf("Ошибка при передаче файла %s: %v", fileName, err)
 		http.Error(w, "Ошибка при скачивании файла", http.StatusInternalServerError)
 	}
 }
-
 func (s *Server) DeleteFilesHandler(w http.ResponseWriter, r *http.Request) {
 	var request struct {
 		Files []string `json:"files"`

@@ -9,7 +9,10 @@ import (
 func main() {
 	cfg := config.LoadConfig()
 
-	logger, _ := config.ZapConfig().Build()
+	logger, err := config.ZapConfig().Build()
+	if err != nil {
+		panic(err)
+	}
 
 	tmpl, err := templates.LoadTemplates()
 	if err != nil {
