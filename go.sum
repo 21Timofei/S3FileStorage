@@ -2,6 +2,8 @@ github.com/21Timofei/UI-Web-Interface v0.0.0-20250201105220-5497c2ff9e1f h1:wBA9
 github.com/21Timofei/UI-Web-Interface v0.0.0-20250201105220-5497c2ff9e1f/go.mod h1:tuhCWYrwCkk/9pJjjb7QoCXJIfN9fKAlSfYNCYaYBZQ=
 github.com/21Timofei/UI-Web-Interface v0.0.0-20250201110327-7fc4f9f35970 h1:CmnDbX+jZc51zeSXsjfNSsl17aXa5xjzYJzof4oWHHA=
 github.com/21Timofei/UI-Web-Interface v0.0.0-20250201110327-7fc4f9f35970/go.mod h1:tuhCWYrwCkk/9pJjjb7QoCXJIfN9fKAlSfYNCYaYBZQ=
+github.com/21Timofei/UI-Web-Interface v0.0.0-20250201120358-538ba9168985 h1:ESRi8LG5G1V+IkCR9Yzb0B7qJIbEAFApQo6JToPnFws=
+github.com/21Timofei/UI-Web-Interface v0.0.0-20250201120358-538ba9168985/go.mod h1:tuhCWYrwCkk/9pJjjb7QoCXJIfN9fKAlSfYNCYaYBZQ=
 github.com/aws/aws-sdk-go v1.55.6 h1:cSg4pvZ3m8dgYcgqB97MrcdjUmZ1BeMYKUxMMB89IPk=
 github.com/aws/aws-sdk-go v1.55.6/go.mod h1:eRwEWoyTWFMVYVQzKMNHWP5/RV4xIUGMQfXQHfHkpNU=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

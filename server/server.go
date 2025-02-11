@@ -30,11 +30,11 @@ func NewServer(cfg *config.Config, tmpl *template.Template, logger *zap.Logger) 
 }
 
 func (s *Server) InitializeRoutes() {
-	s.Mux.HandleFunc("/", s.ListFilesHandler)                                                   // Главная страница - список файлов
-	s.Mux.HandleFunc("/upload", s.UploadFileHandler)                                            // Загрузка файла
-	s.Mux.HandleFunc("/download", s.DownloadFileHandler)                                        // Скачивание файла
-	s.Mux.HandleFunc("/delete", s.DeleteFilesHandler)                                           // Удаление файлов
-	s.Mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static")))) // Статика
+	s.Mux.HandleFunc("/", s.ListFilesHandler)
+	s.Mux.HandleFunc("/upload", s.UploadFileHandler)
+	s.Mux.HandleFunc("/download", s.DownloadFileHandler)
+	s.Mux.HandleFunc("/delete", s.DeleteFilesHandler)
+	s.Mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 }
 
 func (s *Server) Start(port string) {
